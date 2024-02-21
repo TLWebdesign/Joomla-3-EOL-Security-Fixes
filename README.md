@@ -1,6 +1,9 @@
 # Joomla 3 EOL Security Fixes
  
 This plugin will help you update the files associated with the known security fixes as listed below.
+It will overwrite the files and then auto uninstalls itself again. 
+
+## Version 1.0.0 fixes the below security issues.
 - [20231101] - Core - Exposure of environment variables. More info on the vulnerability here: https://developer.joomla.org/security-centre/919-20231101-core-exposure-of-environment-variables.html
 - [20240201] - Core - Insufficient session expiration in MFA management views. More info on the vulnerability here: https://developer.joomla.org/security-centre/925-20240201-core-insufficient-session-expiration-in-mfa-management-views.html
 - [20240202] - Core - Open redirect in installation application. More info on the vulnerability here: https://developer.joomla.org/security-centre/926-20240202-core-open-redirect-in-installation-application.html
