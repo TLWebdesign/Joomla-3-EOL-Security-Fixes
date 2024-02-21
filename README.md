@@ -15,4 +15,6 @@ If this plugin saved you valuable time please consider donating something to the
 Especially agencies who will save tons of time when they have multiple websites still on J3. Any donation is much appreciated.
 
 ## Backup First!
-Always try this fix first on a test environment because it could potentially break language files that were not following exact specification. Previously these language files would still work but in fixing the vulnerability the strictness of how these files are processed makes it that a language string can not have new lines in the content anymore.
+**Always try this fix first on a test environment!**
+- The fix for security issue [20231101] could potentially break language files that were not following exact specification. Previously these language files would still work but in fixing the vulnerability the strictness of how these files are processed makes it that a language string can not have new lines in the content anymore.
+
