@@ -45,27 +45,32 @@ class  joomla3eolsecurityfixesInstallerScript
             }
         }
 
+        return true;
+    }
+
+    function postflight($type, $parent) {
         // Remove this plugin to leave no trace
         $this->uninstallPlugin();
-
-        return true;
     }
 
     private function uninstallPlugin()
     {
         $plugins = $this->findThisPlugin();
         foreach ($plugins as $plugin) {
-            Installer::getInstance()->uninstall($plugin->type, $plugin->extension_id);
+            if (Installer::getInstance()->uninstall($plugin->type, $plugin->extension_id)) {
+                Factory::getApplication()->enqueueMessage("Plugin " . $plugin->name . " successfully removed", 'message');
+            } else {
+                Factory::getApplication()->enqueueMessage("Plugin " . $plugin->name . " could not be removed automatically. Please uninstall manually!", 'warning');
+            }
         }
     }
-
     private function findThisPlugin()
     {
         $db    = Factory::getDbo();
         $query = $db->getQuery(true)
-            ->select(array('extension_id', 'type'))
+            ->select(array('extension_id', 'type', 'name'))
             ->from('#__extensions')
-            ->where($db->quoteName('element') . ' = ' . $db->quote('joomla3eolsecurityfixes'))
+            ->where($db->quoteName('element') . 'IN (' . $db->quote('languagehotfix') . ', ' . $db->quote('joomla3eolsecurityfixes') . ')')
             ->where($db->quoteName('type') . ' = ' . $db->quote('file'));
         $db->setQuery($query);
 
