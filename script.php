@@ -35,7 +35,7 @@ class  joomla3eolsecurityfixesInstallerScript
 
             // Check if the file exists in the destination path
             if (File::exists($destPath)) {
-                if (!File::copy($file, $destPath, '', true)) {
+                if (!File::copy($file, $destPath, '', false)) {
                     Factory::getApplication()->enqueueMessage("Failed to replace $relativePath", 'error');
                 } else {
                     Factory::getApplication()->enqueueMessage("Replaced $relativePath", 'message');
