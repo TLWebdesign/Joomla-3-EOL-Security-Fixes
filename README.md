@@ -27,4 +27,4 @@ Especially agencies who will save tons of time when they have multiple websites 
 ## Backup First!
 **Always try this fix first on a test environment!**
 - The fix for security issue [20231101] could potentially break language files that were not following exact specification. Previously these language files would still work but in fixing the vulnerability the strictness of how these files are processed makes it that a language string can not have new lines in the content anymore.
-
+- The fix for security issue [20240801] could potentially break components that worked in certain way. More info about this here: https://docs.joomla.org/J5.x:Behavior_change_for_Uri::isInternal_for_URLs_without_protocol
