@@ -110,10 +110,12 @@ class FinderViewSearch extends JViewLegacy
             'w2' => 'string',
         ];
 
-        foreach ($queryParameterList as $parameter => $filter) {
+        foreach ($queryParameterList as $parameter => $filter)
+		{
             $value = $app->input->get($parameter, null, $filter);
 
-            if (is_null($value)) {
+            if (is_null($value))
+			{
                 continue;
             }
 

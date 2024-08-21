@@ -44,7 +44,7 @@ class SearchViewSearch extends JViewLegacy
 		$areas      = $this->get('areas');
 		$state      = $this->get('state');
 		$searchWord = $state->get('keyword');
-        var_dump($searchWord);
+        var_dump($areas);
 		$params     = $app->getParams();
 
 		if (!$app->getMenu()->getActive())
@@ -134,26 +134,24 @@ class SearchViewSearch extends JViewLegacy
 			// Flag indicates to not add limitstart=0 to URL
 			$pagination->hideEmptyLimitstart = true;
 
-            $this->pagination = &$pagination;
-
             // Add additional parameters
-            $queryParameterList = [
-                'start'  => 'int',
-                'keyword'  => 'string',
-                'searchword'  => 'string',
-                'ordering'  => 'string',
-                'searchphrase'  => 'string',
-                'limit' => 'int'
-            ];
+			$queryParameterList = [
+				'searchword'  => 'string',
+				'searchphrase'  => 'string',
+				'areas' => 'array',
+				'ordering' => 'string'
+			];
 
-            foreach ($queryParameterList as $parameter => $filter) {
+            foreach ($queryParameterList as $parameter => $filter)
+			{
                 $value = $app->input->get($parameter, null, $filter);
 
-                if (is_null($value)) {
+                if (is_null($value))
+				{
                     continue;
                 }
 
-                $this->pagination->setAdditionalUrlParam($parameter, $value);
+                $pagination->setAdditionalUrlParam($parameter, $value);
             }
 
 			if ($state->get('match') === 'exact')
