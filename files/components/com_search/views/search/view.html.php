@@ -44,7 +44,6 @@ class SearchViewSearch extends JViewLegacy
 		$areas      = $this->get('areas');
 		$state      = $this->get('state');
 		$searchWord = $state->get('keyword');
-        var_dump($areas);
 		$params     = $app->getParams();
 
 		if (!$app->getMenu()->getActive())
