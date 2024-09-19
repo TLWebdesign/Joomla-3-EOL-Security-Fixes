@@ -15,7 +15,8 @@ class  joomla3eolsecurityfixesInstallerScript
 
 
         // Get the "files" directory path from the plugin's installation package
-        $sourcePath = $parent->getParent()->getPath('source') . '/files';
+        // On Windows we have to use realpath() because of backslashes in the PATH or it will give the error "original File not found"...
+        $sourcePath = realpath($parent->getParent()->getPath('source') . '/files');
 
         // Define the root path of your Joomla installation
         $rootPath = JPATH_ROOT;
