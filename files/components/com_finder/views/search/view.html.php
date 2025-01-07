@@ -108,6 +108,8 @@ class FinderViewSearch extends JViewLegacy
             'd2' => 'string',
             'w1' => 'string',
             'w2' => 'string',
+            'filter_order' => 'word',
+            'filter_order_Dir' => 'word'
         ];
 
         foreach ($queryParameterList as $parameter => $filter)
