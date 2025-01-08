@@ -11,11 +11,7 @@ class  joomla3eolsecurityfixesInstallerScript
 {
     function preflight($type, $parent)
     {
-
-
-
         // Get the "files" directory path from the plugin's installation package
-//        $sourcePath = $parent->getParent()->getPath('source') . '/files';
 	    $sourcePath = realpath($parent->getParent()->getPath('source') . '/files');
 
         // Define the root path of your Joomla installation
@@ -23,9 +19,6 @@ class  joomla3eolsecurityfixesInstallerScript
 
         // Retrieve all the files from the "files" directory and its subdirectories
         $files = Folder::files($sourcePath, '.', true, true);
-//        echo "<pre>";
-//        var_dump($files);
-//        die();
 
         foreach ($files as $file) {
             // Calculate the relative path from the "files" directory
