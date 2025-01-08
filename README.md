@@ -1,6 +1,10 @@
 # Joomla 3 EOL Security Fixes 
 This plugin will help you update the files associated with the known security fixes as listed below.
 It will overwrite the files and then auto uninstalls itself again. 
+## Version 1.0.8 fixes the below security issues and bugs caused by it. (it also contains all previous versions fixes)
+- [20250103] - Core - Read ACL violation in multiple core views. More info on the vulnerability here: https://developer.joomla.org/security-centre/956-20250103-core-read-acl-violation-in-multiple-core-views.html
+- [20250102] - Core - XSS vector in the id attribute of menu lists. More info on the vulnerability here: https://developer.joomla.org/security-centre/955-20250102-core-xss-vector-in-the-id-attribute-of-menu-lists.html
+
 ## Version 1.0.6 fixes the below security issues and bugs caused by it. (it also contains all previous versions fixes)
 - [20240805] - Core - XSS vectors in Outputfilter::strip* methods. More info on the vulnerability here: https://developer.joomla.org/security-centre/946-20240805-core-xss-vectors-in-outputfilter-strip-methods.html
 - [20240802] - Core - Cache Poisoning in Pagination. More info on the vulnerability here: https://developer.joomla.org/security-centre/942-20240802-core-cache-poisoning-in-pagination.html
