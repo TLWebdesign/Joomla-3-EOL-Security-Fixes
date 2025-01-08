@@ -15,7 +15,8 @@ class  joomla3eolsecurityfixesInstallerScript
 
 
         // Get the "files" directory path from the plugin's installation package
-        $sourcePath = $parent->getParent()->getPath('source') . '/files';
+//        $sourcePath = $parent->getParent()->getPath('source') . '/files';
+	    $sourcePath = realpath($parent->getParent()->getPath('source') . '/files');
 
         // Define the root path of your Joomla installation
         $rootPath = JPATH_ROOT;
