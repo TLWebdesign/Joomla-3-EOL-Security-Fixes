@@ -61,7 +61,7 @@ final class Version
      * @var    string
      * @since  3.8.0
      */
-    const EXTRA_VERSION = '2026-04-19-EOLfix';
+    const EXTRA_VERSION = '2026-05-26-EOLfix';
 
     /**
      * Release version.
