@@ -2,6 +2,14 @@
 This plugin will help you update the files associated with the known security fixes as listed below.
 It will overwrite the files and then auto uninstalls itself again.
 
+## Version 1.0.11 fixes the below security issues (it also contains all previous versions fixes)
+- [20260501] — Core — XSS in feed modules (CVE-2026-25900). More info: https://developer.joomla.org/security-centre/1033-20260501-core-xss-in-feed-modules.html
+- [20260503] — Core — XSS in com_contenthistory (CVE-2026-30894). More info: https://developer.joomla.org/security-centre/1035-20260503-core-xss-in-com-contenthistory
+- [20260509] — Core — LFI in HTMLView layout parameter (CVE-2026-40383). More info: https://developer.joomla.org/security-centre/1041-20260509-core-lfi-in-htmlview-layout-parameter.html
+- [20260518] — Core — Transport encryption downgrade for password and username reset links (CVE-2026-48902). More info: https://developer.joomla.org/security-centre/1050-20260518-core-transport-encryption-downgrade-for-password-and-username-reset-links.html
+- [20260519] — Framework — Inadequate content filtering within the checkAttribute filter code (CVE-2026-48903). More info: https://developer.joomla.org/security-centre/1051-20260519-framework-inadequate-content-filtering-within-the-checkattribute-filter-code.html
+- [20260520] — Framework — Inadequate content filtering within the cleanAttributes filter code (CVE-2026-48905). More info: https://developer.joomla.org/security-centre/1052-20260520-framework-inadequate-content-filtering-within-the-cleanattributes-filter-code.html
+
 ## Version 1.0.10 fixes the below security issues (it also contains all previous versions fixes)
 - [20260301] — Core — ACL hardening in com_ajax (CVE-2026-21629). More info: https://developer.joomla.org/security-centre/1018-20260301-core-acl-hardening-in-com_ajax.html
 - [20260303] — Core — XSS vector in com_associations comparison view (CVE-2026-21631). More info: https://developer.joomla.org/security-centre/1020-20260303-core-xss-vector-in-com_associations.html

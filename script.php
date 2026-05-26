@@ -2,9 +2,9 @@
 /**
  * @package     Joomla.LegacySecurityFixes
  * @author      TLWebdesign (Original)
- * @maintainer  N8 Solutions (2026 Security Backports)
+ * @maintainer  N8 Solutions & TLWebdesign (2026 Security Backports)
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
- * Updated April 2026 by N8 Solutions to include v1.0.10 EOL security backports.
+ * Updated May 2026 by TLWebdesign to include latest security backports.
  */
 
 defined('_JEXEC') or die;
@@ -64,7 +64,7 @@ class joomla3eolsecurityfixesInstallerScript
     public function postflight($type, $parent)
     {
         // Simple, cumulative success message
-        Factory::getApplication()->enqueueMessage("<h2>Joomla 3.10.12 Hardened Successfully (v1.0.10)</h2><p>All known core vulnerabilities (including 2024-2026 backports) have been patched. The system is now secure.</p>", 'message');
+        Factory::getApplication()->enqueueMessage("<h2>Joomla 3.10.12 Hardened Successfully (v1.0.11)</h2><p>All known core vulnerabilities (including 2024-2026 backports) have been patched. The system is now secure.</p>", 'message');
 
         // Remove this plugin to leave no trace (self-uninstall)
         $this->uninstallPlugin();
