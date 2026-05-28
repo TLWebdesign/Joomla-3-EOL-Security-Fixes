@@ -3,7 +3,7 @@ This plugin will help you update the files associated with the known security fi
 It will overwrite the files and then auto uninstalls itself again.
 
 ## Version 1.1.2 fixes the below update issues (it also contains all previous versions fixes)
-- [20260528] — Infrastructure — Realigned the internal XML manifest and installer scripts to v1.1.2 to force a clean update path. This ensures the Joomla updater successfully applies the files, updates the success messages, and correctly displays the new version in the backend footer.
+- Infrastructure — Realigned the internal XML manifest and installer scripts to v1.1.2 to force a clean update path. This ensures the Joomla updater successfully applies the files, updates the success messages, and correctly displays the new version in the backend footer.
 
 ## Version 1.0.11 fixes the below security issues (it also contains all previous versions fixes)
 - [20260501] — Core — XSS in feed modules (CVE-2026-25900). More info: https://developer.joomla.org/security-centre/1033-20260501-core-xss-in-feed-modules.html
