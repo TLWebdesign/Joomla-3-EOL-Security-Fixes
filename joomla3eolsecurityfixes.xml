@@ -2,8 +2,8 @@
 <extension type="file" version="3.10" method="upgrade">
     <name>Joomla 3 EOL Security Fixes (2026 Update)</name>
     <author>Tom van der Laan || TLWebdesign (Updated by N8Solutions)</author>
-    <creationDate>2026-05-26</creationDate>
-    <version>1.0.11</version>
+    <creationDate>2026-05-28</creationDate>
+    <version>1.1.2</version>
     <description><![CDATA[This plugin fixes all known vulnerabilities (as of the release of this plugin) in Joomla 3.10.12. After applying the fix it auto-uninstalls itself.]]></description>
     <scriptfile>script.php</scriptfile>
 </extension>

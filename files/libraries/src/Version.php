@@ -4,7 +4,8 @@
  *
  * @copyright  (C) 2005 Open Source Matters, Inc. <https://www.joomla.org>
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
- * Updated April 2026 by N8 Solutions to include v1.0.10 EOL security backports.
+ * Updated May 2026 by TLWebdesign to include latest security backports.
+ * Updated May 2026 by N8 Solutions to realign internal versioning (v1.1.2).
  */
 
 namespace Joomla\CMS;
@@ -61,7 +62,7 @@ final class Version
      * @var    string
      * @since  3.8.0
      */
-    const EXTRA_VERSION = '2026-05-26-EOLfix';
+    const EXTRA_VERSION = '2026-05-28-EOLfix';
 
     /**
      * Release version.
