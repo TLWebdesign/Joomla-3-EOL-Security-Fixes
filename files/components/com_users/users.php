@@ -17,8 +17,15 @@ JLoader::register('UsersHelperRoute', JPATH_COMPONENT . '/helpers/route.php');
 $app  = Factory::getApplication();
 $user = Factory::getUser();
 $view = $app->input->get('view');
+$task = $app->input->get('task', 'display');
 
-if ($view)
+// Ignore any-non-"display" tasks
+if (strpos($task, '.') !== false)
+{
+	$task = explode('.', $task)[1];
+}
+
+if ($view && $task === 'display')
 {
 	switch ($view)
 	{
