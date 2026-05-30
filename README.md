@@ -2,6 +2,8 @@
 This plugin will help you update the files associated with the known security fixes as listed below.
 It will overwrite the files and then auto uninstalls itself again.
 
+## Version 1.1.3 fixes a regression with com_users login in certain cases.
+
 ## Version 1.1.2 fixes the below update issues (it also contains all previous versions fixes)
 - Infrastructure — Realigned the internal XML manifest and installer scripts to v1.1.2 to force a clean update path. This ensures the Joomla updater successfully applies the files, updates the success messages, and correctly displays the new version in the backend footer.
 
