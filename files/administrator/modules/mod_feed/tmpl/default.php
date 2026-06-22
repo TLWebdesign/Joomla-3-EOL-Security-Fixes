@@ -56,7 +56,7 @@ else
 		// Feed title
 		if (!is_null($feed->title) && $params->get('rsstitle', 1)) : ?>
 			<h2 class="<?php echo $direction; ?>">
-				<a href="<?php echo htmlspecialchars(str_replace('&', '&amp;', $rssurl), ENT_QUOTES, 'UTF-8'); ?>" target="_blank">
+				<a href="<?php echo htmlspecialchars($rssurl, ENT_QUOTES, 'UTF-8'); ?>" target="_blank">
 				<?php echo htmlspecialchars($feed->title, ENT_QUOTES, 'UTF-8'); ?></a>
 			</h2>
 		<?php endif;
