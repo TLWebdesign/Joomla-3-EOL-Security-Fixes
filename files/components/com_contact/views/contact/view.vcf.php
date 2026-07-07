@@ -41,12 +41,25 @@ class ContactViewContact extends JViewLegacy
 	public function display($tpl = null)
 	{
 		// Get model data.
+		$app  = JFactory::getApplication();
+		$user = JFactory::getUser();
 		$item = $this->get('Item');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
 			JError::raiseWarning(500, implode("\n", $errors));
+
+			return false;
+		}
+
+		// Check if access is not public.
+		$groups = $user->getAuthorisedViewLevels();
+
+		if (!in_array($item->access, $groups) || !in_array($item->category_access, $groups))
+		{
+			$app->enqueueMessage(JText::_('JERROR_ALERTNOAUTHOR'), 'error');
+			$app->setHeader('status', 403, true);
 
 			return false;
 		}
