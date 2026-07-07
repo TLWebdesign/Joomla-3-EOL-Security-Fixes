@@ -1,0 +1,107 @@
+name: Build release
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to create, for example v1.1.4'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish release
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Resolve release tag
+        id: release
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
+            tag="${{ inputs.tag }}"
+          else
+            tag="${GITHUB_REF_NAME}"
+          fi
+
+          tag="${tag#refs/tags/}"
+
+          if [[ -z "${tag}" ]]; then
+            echo "::error::Release tag is empty."
+            exit 1
+          fi
+
+          version="${tag#v}"
+          version="${version#V}"
+          manifest_version="$(php -r '$xml = simplexml_load_file("joomla3eolsecurityfixes.xml"); echo (string) $xml->version;')"
+
+          if [[ "${manifest_version}" != "${version}" ]]; then
+            echo "::error::Tag ${tag} does not match manifest version ${manifest_version}."
+            exit 1
+          fi
+
+          archive="joomla3eolsecurityfixes-${version}.zip"
+
+          {
+            echo "tag=${tag}"
+            echo "version=${version}"
+            echo "archive=${archive}"
+          } >> "${GITHUB_OUTPUT}"
+
+      - name: Validate package files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          php -d error_reporting='E_ALL & ~E_DEPRECATED' -l script.php
+          php -r 'new SimpleXMLElement(file_get_contents("joomla3eolsecurityfixes.xml"));'
+
+          while IFS= read -r -d '' file; do
+            php -d error_reporting='E_ALL & ~E_DEPRECATED' -l "${file}"
+          done < <(find files -name '*.php' -print0)
+
+      - name: Build ZIP package
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          rm -f "${{ steps.release.outputs.archive }}"
+          zip -r "${{ steps.release.outputs.archive }}" \
+            files \
+            joomla3eolsecurityfixes.xml \
+            script.php \
+            LICENSE \
+            -x '*.DS_Store'
+
+          unzip -l "${{ steps.release.outputs.archive }}"
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          tag="${{ steps.release.outputs.tag }}"
+          archive="${{ steps.release.outputs.archive }}"
+
+          if gh release view "${tag}" >/dev/null 2>&1; then
+            echo "::error::Release ${tag} already exists."
+            exit 1
+          fi
+
+          gh release create "${tag}" "${archive}" \
+            --target "${GITHUB_SHA}" \
+            --title "${tag}" \
+            --notes "Joomla 3 EOL Security Fixes ${{ steps.release.outputs.version }}"
