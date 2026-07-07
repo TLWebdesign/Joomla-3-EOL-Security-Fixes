@@ -146,6 +146,14 @@ class LanguagesModelOverride extends JModelAdmin
 			return false;
 		}
 
+		// Only super users may save quoted override values.
+		if (!JFactory::getUser()->authorise('core.admin') && (strpos($data['override'], '"') !== false || strpos($data['override'], "'") !== false))
+		{
+			$this->setError(JText::_('COM_LANGUAGES_ERROR_QUOTES_IN_TEXT'));
+
+			return false;
+		}
+
 		$client = $client ? 'administrator' : 'site';
 
 		// Parse the override.ini file in oder to get the keys and strings.
