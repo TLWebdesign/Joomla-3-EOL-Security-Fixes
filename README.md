@@ -2,6 +2,10 @@
 This plugin will help you update the files associated with the known security fixes as listed below.
 It will overwrite the files and then auto uninstalls itself again.
 
+## Version 1.1.4 fixes the below security issues (it also contains all previous versions fixes)
+- [20260702] — Core — Incorrect Access Control in com_contact vcf download (CVE-2026-48948). More info: https://developer.joomla.org/security-centre/1056-20260702-core-incorrect-access-control-in-com-contact-vcf-download.html
+- [20260708] — Core — XSS through language overrides (CVE-2026-48954). More info: https://developer.joomla.org/security-centre/1062-20260708-core-xss-through-language-overrides.html
+
 ## Version 1.1.3 fixes a regression with com_users login in certain cases.
 
 ## Version 1.1.2 fixes the below update issues (it also contains all previous versions fixes)
