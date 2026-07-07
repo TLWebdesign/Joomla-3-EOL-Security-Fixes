@@ -1,3 +1,7 @@
 # User-specific stuff
 .idea
 .DS_Store
+AGENTS.MD
+CLAUDE.MD
+.codex
+.claude
