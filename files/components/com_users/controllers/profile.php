@@ -97,6 +97,12 @@ class UsersControllerProfile extends UsersController
 		$user   = JFactory::getUser();
 		$userId = (int) $user->get('id');
 
+		// Only allow logged in Users
+		if ($user->guest)
+		{
+			throw new RuntimeException(JText::_('JERROR_ALERTNOAUTHOR'), 403);
+		}
+
 		// Get the user data.
 		$requestData = $app->input->post->get('jform', array(), 'array');
 
