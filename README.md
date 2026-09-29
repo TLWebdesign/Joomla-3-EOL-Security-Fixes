@@ -2,6 +2,12 @@
 This plugin will help you update the files associated with the known security fixes as listed below.
 It will overwrite the files and then auto uninstalls itself again.
 
+## Version 1.1.5 fixes the below security issues (it also contains all previous versions fixes)
+- [20260902] - Core - Unauthorized user account creation via profile.save controller (CVE-2026-90907). More info: https://developer.joomla.org/security-centre/1082-20260902-core-unauthorized-user-account-creation-via-profile-save-controller.html
+- [20260909] - Core - SSRF vectors in various core extensions (CVE-2026-92222). More info: https://developer.joomla.org/security-centre/1089-20260909-core-ssrf-vectors-in-various-core-extensions.html
+- [20260915] - Core - XSS filter bypass in InputFilter via HTML5 entity decode mismatch (CVE-2026-92231). More info: https://developer.joomla.org/security-centre/1095-20260915-core-xss-filter-bypass-in-inputfilter-via-html5-entity-decode-mismatch.html
+- [20260916] - Core - XSS filter bypass in InputFilter via whitespace characters in HTML data URIs (CVE-2026-92232). More info: https://developer.joomla.org/security-centre/1096-20260916-core-xss-filter-bypass-in-inputfilter-via-whitespace-characters-in-html-data-uris.html
+
 ## Version 1.1.4 fixes the below security issues (it also contains all previous versions fixes)
 - [20260702] — Core — Incorrect Access Control in com_contact vcf download (CVE-2026-48948). More info: https://developer.joomla.org/security-centre/1056-20260702-core-incorrect-access-control-in-com-contact-vcf-download.html
 - [20260708] — Core — XSS through language overrides (CVE-2026-48954). More info: https://developer.joomla.org/security-centre/1062-20260708-core-xss-through-language-overrides.html
