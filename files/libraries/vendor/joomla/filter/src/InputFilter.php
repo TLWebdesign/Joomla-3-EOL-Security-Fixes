@@ -195,6 +195,7 @@ class InputFilter
 	 */
 	private $blockedChars = array(
 		'&tab;',
+		'&newline;',
 		'&space;',
 		'&colon;',
 		'&column;',
@@ -693,8 +694,8 @@ class InputFilter
 			// Strips unicode, hex, etc
 			$attrSubSet[1] = str_replace('&#', '', $attrSubSet[1]);
 
-			// Strip normal newline within attr value
-			$attrSubSet[1] = preg_replace('/[\n\r]/', '', $attrSubSet[1]);
+			// Strip tab and newline within attr value (browsers drop these when parsing a URL)
+			$attrSubSet[1] = preg_replace('/[\t\n\r]/', '', $attrSubSet[1]);
 
 			// Strip double quotes
 			$attrSubSet[1] = str_replace('"', '', $attrSubSet[1]);
