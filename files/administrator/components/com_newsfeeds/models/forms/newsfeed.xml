@@ -106,6 +106,7 @@
 			required="true"
 			filter="url"
 			validate="url"
+			schemes="http,https"
 		/>
 
 		<field

@@ -31,6 +31,7 @@
 					size="50"
 					required="true"
 					validate="url"
+					schemes="http,https"
 				/>
 
 				<field

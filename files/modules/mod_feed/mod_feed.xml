@@ -31,6 +31,7 @@
 					filter="url"
 					required="true"
 					validate="url"
+					schemes="http,https"
 				/>
 
 				<field

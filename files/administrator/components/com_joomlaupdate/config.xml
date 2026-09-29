@@ -45,6 +45,8 @@
 			default=""
 			length="50"
 			showon="updatesource:custom"
+			validate="url"
+			schemes="http,https,ftp,ftps"
 		/>
 
 	</fieldset>
