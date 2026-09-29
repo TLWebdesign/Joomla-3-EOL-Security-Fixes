@@ -322,10 +322,30 @@ class InputFilter
 	 */
 	public static function checkAttribute($attrSubSet)
 	{
-		$quoteStyle = version_compare(\PHP_VERSION, '5.4', '>=') ? \ENT_QUOTES | \ENT_HTML401 : \ENT_QUOTES;
+		// ENT_HTML5 is required to decode HTML5-specific entities that browsers support (CVE-2026-92231)
+		$quoteStyle = version_compare(\PHP_VERSION, '5.4', '>=') ? \ENT_QUOTES | \ENT_HTML5 : \ENT_QUOTES;
 
 		$attrSubSet[0] = strtolower($attrSubSet[0]);
-		$attrSubSet[1] = html_entity_decode(strtolower($attrSubSet[1]), $quoteStyle, 'UTF-8');
+
+		// Decode HTML entities BEFORE lowercasing to preserve case-sensitive entities like &NewLine;
+		$decoded = html_entity_decode($attrSubSet[1], $quoteStyle, 'UTF-8');
+
+		// Also decode remaining ASCII numeric character references (like &#1; or &#x0A;) that browsers will decode.
+		// Non-ASCII references are left untouched so the value stays valid UTF-8 for the checks below.
+		$decoded = preg_replace_callback(
+			'/&#(?:x[a-f0-9]+|[0-9]+);/i',
+			function ($matches)
+			{
+				$char = substr($matches[0], 2, -1);
+				$code = strtolower(substr($char, 0, 1)) === 'x' ? hexdec(substr($char, 1)) : (int) $char;
+
+				return $code < 0x80 ? \chr($code) : $matches[0];
+			},
+			$decoded
+		);
+
+		// Now lowercase
+		$attrSubSet[1] = strtolower($decoded);
 
 		/**
 		 * SECURITY PATCH: CVE-2025-54476 & CVE-2025-63082
