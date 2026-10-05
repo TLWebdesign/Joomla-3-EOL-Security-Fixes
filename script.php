@@ -65,7 +65,7 @@ class joomla3eolsecurityfixesInstallerScript
     public function postflight($type, $parent)
     {
         // Simple, cumulative success message
-        Factory::getApplication()->enqueueMessage("<h2>Joomla 3.10.12 Hardened Successfully (v1.1.5)</h2><p>All known core vulnerabilities up to and including the September 2026 backports have been patched. The system is now secure.</p>", 'message');
+        Factory::getApplication()->enqueueMessage("<h2>Joomla 3.10.12 Hardened Successfully (v1.1.6)</h2><p>All known core vulnerabilities up to and including the September 2026 backports have been patched, together with the October 2026 InputFilter regression fix. The system is now secure.</p>", 'message');
 
         // Remove this plugin to leave no trace (self-uninstall)
         $this->uninstallPlugin();

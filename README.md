@@ -2,6 +2,9 @@
 This plugin will help you update the files associated with the known security fixes as listed below.
 It will overwrite the files and then auto uninstalls itself again.
 
+## Version 1.1.6 fixes the below security issues (it also contains all previous versions fixes)
+- Core - XSS filter bypass in InputFilter when an attribute value contains invalid UTF-8. checkAttribute() treated a null result from preg_replace() as an empty string, which skipped the javascript: and data: checks. This was a regression introduced by this package's CVE-2025-54476 backport (present since V1.0.9); stock Joomla 3.10.12 was not affected. Reported privately by Niel Buys.
+
 ## Version 1.1.5 fixes the below security issues (it also contains all previous versions fixes)
 - [20260902] - Core - Unauthorized user account creation via profile.save controller (CVE-2026-90907). More info: https://developer.joomla.org/security-centre/1082-20260902-core-unauthorized-user-account-creation-via-profile-save-controller.html
 - [20260909] - Core - SSRF vectors in various core extensions (CVE-2026-92222). More info: https://developer.joomla.org/security-centre/1089-20260909-core-ssrf-vectors-in-various-core-extensions.html
