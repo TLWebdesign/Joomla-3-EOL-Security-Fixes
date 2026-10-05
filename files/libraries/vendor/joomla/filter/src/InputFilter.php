@@ -353,7 +353,16 @@ class InputFilter
 		 */
 		
 		// 1. Strip hidden control characters to prevent filter bypass (CVE-2025-54476)
-		$attrSubSet[1] = preg_replace('/[\x00-\x1F\x7F-\x9F]/u', '', $attrSubSet[1]);
+		$stripped = preg_replace('/[\x00-\x1F\x7F-\x9F]/u', '', $attrSubSet[1]);
+
+		// preg_replace() returns null when the value is not valid UTF-8. Treat that as unsafe,
+		// otherwise the null becomes an empty string and every check below is skipped.
+		if ($stripped === null)
+		{
+			return true;
+		}
+
+		$attrSubSet[1] = $stripped;
 
 		// Remove common XSS-evasion characters after entity decoding (CVE-2026-48903)
 		$attrSubSet[1] = str_replace(array("\t", "\n", "\r", ' ', "\0"), '', $attrSubSet[1]);
