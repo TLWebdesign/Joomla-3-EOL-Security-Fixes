@@ -71,6 +71,23 @@ jobs:
             php -d error_reporting='E_ALL & ~E_DEPRECATED' -l "${file}"
           done < <(find files -name '*.php' -print0)
 
+      - name: Extract release notes from README
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          awk -v heading="## Version ${{ steps.release.outputs.version }} " '
+            /^## / { if (found) exit; if (index($0, heading) == 1) found = 1 }
+            found { print }
+          ' README.md | sed -e :a -e '/^\n*$/{$d;N;ba' -e '}' > release-notes.md
+
+          if [[ ! -s release-notes.md ]]; then
+            echo "::error::README.md has no '## Version ${{ steps.release.outputs.version }} ...' section."
+            exit 1
+          fi
+
+          cat release-notes.md
+
       - name: Build ZIP package
         shell: bash
         run: |
@@ -104,4 +121,4 @@ jobs:
           gh release create "${tag}" "${archive}" \
             --target "${GITHUB_SHA}" \
             --title "${tag}" \
-            --notes "Joomla 3 EOL Security Fixes ${{ steps.release.outputs.version }}"
+            --notes-file release-notes.md
